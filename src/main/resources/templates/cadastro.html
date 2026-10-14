@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="card">
+            <h2>Cadastro de animal Tech</h2>
+            <form id="form-cadastro"
+                  th:action="@{/animal/salvar}"
+                  th:object="${animal}"
+                  method="post"
+            >
+                <input type="hidden" th:field="*{id}">
+
+                <label for="nome">Nome do Animal</label>
+                <input type="text" id="nome" th:field="*{nome}">
+
+                <label id="data">Data de nascimento</label>
+                <input type="date" id="date" th:field="*{data_nasc}">
+
+                <label id="race">Raça do Animal</label>
+                <input type="text" id="race" th:field="*{race}">
+
+                <label id="foto">Foto do Animal</label>
+                <input type="file" id="foto" >
+
+                <button type="submit"
+                        class="btn-sucess"
+                        th:text="${animal.id == null} ? 'Salvar' : 'Atualizar'"
+                >Salvar</button>
+
+                <a th:href="@{/animal/listagem}">
+                    Voltar
+                </a>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
